@@ -24,7 +24,7 @@ public class TrainStation {
         return name;
     }
 
-    public Integer getStopNumber() {  // ✅ Add this getter
+    public Integer getStopNumber() {  // {TODO} Add this getter
         return stopNumber;
     }
 
@@ -37,7 +37,7 @@ public class TrainStation {
         this.name = name;
     }
 
-    public void setStopNumber(Integer stopNumber) {  // ✅ Add this setter
+    public void setStopNumber(Integer stopNumber) {  // {TODO} Add this setter
         this.stopNumber = stopNumber;
     }
 }
