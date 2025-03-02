@@ -17,7 +17,7 @@ public class PassengerController {
 
     @PostMapping("/add")
     public Passenger addPassenger(@RequestBody Passenger passenger) {
-        // Fare calculation and other logic
+        // {TODO} Fare calculation and other logic
         return passengerService.savePassenger(passenger);
     }
 

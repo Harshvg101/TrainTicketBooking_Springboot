@@ -8,7 +8,7 @@ import com.srts.exception.*;
 @Service
 public class FareService {
 
-    // Method to calculate fare based on stop numbers
+    // {TODO} Method to calculate fare based on stop numbers
     public double calculateFare(TrainStation start, TrainStation end) {
         if (start == null || end == null) {
             throw new InvalidDestinationException("Invalid station details provided.");
@@ -16,12 +16,12 @@ public class FareService {
 
         // Example: Fare = (Difference in stops) * Rate per stop
         int stopDifference = Math.abs(end.getStopNumber() - start.getStopNumber());
-        double farePerStop = 10.0;  // Example fare rate
+        double farePerStop = 10.0;  // {TODO} Work on this its only Example fare rate
 
         return stopDifference * farePerStop;
     }
 
-    // Method to validate credit card using Luhn Algorithm
+    // {TODO} Method to validate credit card using Luhn Algorithm not entirely same as the one we have in documents:
     public boolean validateCreditCard(String cardNumber) {
         if (cardNumber == null || !cardNumber.matches("\\d+")) {
             throw new InvalidCreditCardNumberException("Invalid credit card number.");
