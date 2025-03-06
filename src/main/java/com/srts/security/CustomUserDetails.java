@@ -1,34 +1,36 @@
 package com.srts.security;
 
-import com.srts.entity.Admin;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
 public class CustomUserDetails implements UserDetails {
+    private final String username;
+    private final String password;
+    private final String role;
 
-    private final Admin admin;
-
-    public CustomUserDetails(Admin admin) {
-        this.admin = admin;
+    public CustomUserDetails(String username, String password, String role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role));
     }
 
     @Override
     public String getPassword() {
-        return admin.getPassword();
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return admin.getUsername();
+        return username;
     }
 
     @Override

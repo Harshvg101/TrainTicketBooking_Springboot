@@ -13,6 +13,11 @@ public class AdminService {
 
     public boolean authenticate(String username, String password) {
         Admin admin = adminRepository.findByUsername(username);
-        return admin != null && admin.getPassword().equals(password); // Simple check
+        return admin != null && admin.getPassword().equals(password);
+    }
+
+    public boolean isAdmin(String username) {
+        return adminRepository.findByUsername(username) != null;
     }
 }
+
