@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoT Railways Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center items vertically */
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between; /* Space between the signup and image containers */
+            align-items: center; /* Align items to the center vertically */
+            width: 80%; /* Adjust the width of the container */
+        }
+        .left-container {
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: flex-start; /* Align items to the start (left side) */
+            margin-right: 20px; /* Space between the left and right containers */
+        }
+        .signup-container {
+            background-color: #d3d3d3; /* Light grey background */
+            padding: 20px; /* Reduced padding for a smaller box */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Reduced width for a smaller box */
+            text-align: center;
+            margin-bottom: 20px; /* Space between the signup container and the image */
+        }
+        .signup-container h1 {
+            margin-bottom: 20px;
+        }
+        .signup-container label {
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+        .signup-container input[type="text"],
+        .signup-container input[type="email"],
+        .signup-container input[type="password"],
+        .signup-container input[type="tel"],
+        .signup-container input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .signup-container .horizontal-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .signup-container .horizontal-group label,
+        .signup-container .horizontal-group input {
+            width: 48%;
+        }
+        .signup-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #800080;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 18px; /* Increased font size */
+            cursor: pointer;
+        }
+        .signup-container button:hover {
+            background-color: #5a005a;
+        }
+        .signup-container .login {
+            margin-top: 20px;
+        }
+        .signup-container .login a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .signup-container .login a:hover {
+            text-decoration: underline;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left-container">
+        <div class="signup-container">
+            <div class="welcome-message">
+                <h1>Sign Up</h1>
+            </div>
+            <form>
+                <label for="user-id">User ID (e.g., xxxxx@gmail.com)</label>
+                <input type="email" id="user-id" name="user-id" required>
+
+                <div class="horizontal-group">
+                    <div>
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="first-name" required>
+                    </div>
+                    <div>
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="last-name" required>
+                    </div>
+                </div>
+
+                <div class="horizontal-group">
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div>
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                    </div>
+                </div>
+
+                <div class="horizontal-group">
+                    <div>
+                        <label for="pin">4 Digit PIN</label>
+                        <input type="number" id="pin" name="pin" required maxlength="4" pattern="\d{4}">
+                    </div>
+                    <div>
+                        <label for="confirm-pin">Confirm 4 Digit PIN</label>
+                        <input type="number" id="confirm-pin" name="confirm-pin" required maxlength="4" pattern="\d{4}">
+                    </div>
+                </div>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+            <div class="login">
+                <p>Already have an account? <a href="login.html">Log in here</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="path/to/your/image.jpg" alt="Description of image">
+    </div>
+</div>
+</body>
+</html>
