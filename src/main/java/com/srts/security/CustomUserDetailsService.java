@@ -22,17 +22,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // 🔹 Fetch Admin by username
+        //  Fetch Admin by username
         Admin admin = adminRepository.findByUsername(username);
         if (admin != null) { // Check if admin exists
             return new CustomUserDetails(admin.getUsername(), admin.getPassword(), "ADMIN");
         }
 
-        // 🔹 Fetch User by email
+        //  Fetch User by email
         User user = userRepository.findByEmail(username).orElseThrow(() ->
                 new UsernameNotFoundException("User not found with username: " + username)
         );
-
+        System.out.println("User found: " + user.getEmail());
         return new CustomUserDetails(user.getEmail(), user.getPassword(), "USER");
     }
 }

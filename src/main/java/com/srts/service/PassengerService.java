@@ -8,7 +8,7 @@ import com.srts.repository.PassengerRepository;
 import com.srts.exception.NoRecordFoundException;
 
 @Service
-public class            PassengerService {
+public class PassengerService {
     @Autowired
     private PassengerRepository passengerRepository;
 

@@ -32,6 +32,13 @@ public class JwtFilter extends OncePerRequestFilter {
         String username = null;
         String jwt = null;
 
+        //Allow public routes without checking JWT
+        String requestPath = request.getRequestURI();
+        if (requestPath.equals("/auth/login") || requestPath.equals("/auth/signup")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
             username = jwtUtil.extractUsername(jwt);
@@ -47,4 +54,5 @@ public class JwtFilter extends OncePerRequestFilter {
         }
         chain.doFilter(request, response);
     }
+
 }
