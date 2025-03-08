@@ -1,6 +1,7 @@
 package com.srts.controller;
 
 import com.srts.entity.User;
+import org.springframework.http.HttpStatus;
 import com.srts.repository.UserRepository;
 import com.srts.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,16 +61,23 @@ public class AuthController {
     public ResponseEntity<?> login(@RequestParam String email, @RequestParam String password) {
         Optional<User> userOptional = userRepository.findByEmail(email);
         if (userOptional.isEmpty()) {
-            return ResponseEntity.status(401).body("Invalid credentials.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials.");
         }
 
         User user = userOptional.get();
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            return ResponseEntity.status(401).body("Invalid credentials.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials.");
         }
 
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+        try {
+            // This call may throw an exception if authentication fails
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed: " + ex.getMessage());
+        }
+
+//        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         String jwt = jwtUtil.generateToken(email);
 
         Map<String, Object> response = new HashMap<>();
