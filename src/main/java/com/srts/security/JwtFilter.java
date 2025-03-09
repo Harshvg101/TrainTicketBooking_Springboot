@@ -29,23 +29,29 @@ public class JwtFilter extends OncePerRequestFilter {
 
         final String authorizationHeader = request.getHeader("Authorization");
 
-        String username = null;
-        String jwt = null;
+        String requestPath = request.getRequestURI();
+
+        // Log the request URI for debugging
+        System.out.println("Request URI: " + requestPath);
 
         //Allow public routes without checking JWT
-        String requestPath = request.getRequestURI();
-        if (requestPath.equals("/auth/login") || requestPath.equals("/auth/signup")) {
+        if (requestPath.startsWith("/auth/login") || requestPath.startsWith("/auth/signup")) {
             chain.doFilter(request, response);
             return;
         }
 
+        String username = null;
+        String jwt = null;
+
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
             username = jwtUtil.extractUsername(jwt);
+            System.out.println("authHeader startsWith the Bearer Request URI: " + requestPath);
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            System.out.println("username and security contextholder both are null: " + requestPath);
             if (jwtUtil.validateToken(jwt, userDetails.getUsername())) {
                 UsernamePasswordAuthenticationToken authenticationToken =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

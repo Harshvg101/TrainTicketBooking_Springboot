@@ -70,12 +70,12 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials.");
         }
 
-        try {
-            // This call may throw an exception if authentication fails
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed: " + ex.getMessage());
-        }
+//        try {
+//            // This call may throw an exception if authentication fails
+//            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+//        } catch (Exception ex) {
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed: " + ex.getMessage());
+//        }
 
 //        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         String jwt = jwtUtil.generateToken(email);
