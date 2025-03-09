@@ -35,6 +35,23 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
         return new CustomUserDetailsService(adminRepository, userRepository);
     }
+    /*
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService());
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
+                 .authenticationProvider(daoAuthenticationProvider())
+                 .build();
+    }
+     */
+
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
@@ -79,11 +96,26 @@ public class SecurityConfig {
                 .cors(cors -> cors.configure(http))
                 .authorizeHttpRequests(auth -> auth
                         // Public Endpoints
-                        .requestMatchers("/", "/auth/login", "/auth/signup", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/test/ping").permitAll()
-                        // Admin-Specific Endpoints
-                        .requestMatchers("/admin/**").hasAuthority("ADMIN")
+                        .requestMatchers("/", "/auth/login", "/auth/signup", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/test/ping", "/admin/login").permitAll()
                         // User-Specific Endpoints
-                        .requestMatchers("/booking/**", "/contact/**", "/news/**", "/api/passengers/**").hasAuthority("USER")
+//                        .requestMatchers("/booking/**", "/api/passengers/**").hasRole("USER")
+                        // Admin-Specific Endpoints
+//                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/admin/**", "/contact/reply/**", "/contact/all", "/news/add", "/news/delete/**", "/api/train-stations/upload").hasRole("ADMIN")
+
+                        //Common Endpoints
+                        .requestMatchers("/booking/**", "/api/passengers/**").hasAnyRole("USER", "ADMIN")
+
+
+                        // Public Endpoints
+//                        .requestMatchers("/", "/auth/login", "/auth/signup", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/test/ping", "/admin/login").permitAll()
+//                        // Admin-Specific Endpoints
+//                        .requestMatchers("/admin/**").hasRole("ADMIN")
+//                        .requestMatchers("/contact/reply/**").hasRole("USER")
+//
+//                        // User-Specific Endpoints
+//                        .requestMatchers("/booking/**", "/contact/**", "/news/**", "/api/passengers/**").hasAnyRole("USER", "ADMIN")
+
                         .anyRequest().authenticated()
                 )
                 .httpBasic(httpBasic -> httpBasic.disable());;
