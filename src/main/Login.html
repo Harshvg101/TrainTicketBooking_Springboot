@@ -7,36 +7,35 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background: url('path/to/your/image.jpg') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
-            justify-content: center; /* Center content horizontally */
-            align-items: center; /* Center items vertically */
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the start (top) */
+            align-items: flex-start; /* Align items to the left */
             height: 100vh;
             margin: 0;
+            padding: 20px; /* Add padding */
         }
-        .container {
-            display: flex;
-            justify-content: space-between; /* Space between the login and image containers */
-            align-items: center; /* Align items to the center vertically */
-            width: 80%; /* Adjust the width of the container */
-        }
-        .left-container {
-            display: flex;
-            flex-direction: column; /* Stack elements vertically */
-            align-items: flex-start; /* Align items to the start (left side) */
-            margin-right: 20px; /* Space between the left and right containers */
+        .header-text {
+            color: purple;
+            font-weight: bold;
+            font-size: 24px; /* Adjust font size as needed */
+            margin-bottom: 10px; /* Space between header and subheader */
         }
         .login-container {
-            background-color: #d3d3d3; /* Light grey background */
+            background-color: rgba(211, 211, 211, 0.9); /* Light grey background with transparency */
             padding: 40px; /* Increased padding for a bigger box */
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 400px; /* Increased width for a bigger box */
             text-align: center;
-            margin-bottom: 20px; /* Space between the login container and the image */
+            margin: 0 auto; /* Center the container horizontally */
+            margin-bottom: 20px; /* Space below the container */
         }
         .login-container h1 {
             margin-bottom: 20px;
+            color: purple; /* Changed the color to purple */
         }
         .login-container label {
             display: block;
@@ -60,6 +59,7 @@
             color: #fff;
             font-size: 18px; /* Increased font size */
             cursor: pointer;
+            margin-bottom: 10px; /* Space between buttons */
         }
         .login-container button:hover {
             background-color: #5a005a;
@@ -74,10 +74,15 @@
         .login-container .signup a:hover {
             text-decoration: underline;
         }
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
+        .login-container .forgot-password {
+            margin-top: 10px;
+        }
+        .login-container .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .login-container .forgot-password a:hover {
+            text-decoration: underline;
         }
         .welcome-message {
             text-align: center;
@@ -86,29 +91,28 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="left-container">
-        <div class="welcome-message">
-            <h1>Welcome to SoT Railways!</h1>
-        </div>
-        <div class="login-container">
-            <form>
-                <label for="email">User ID (email)</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit">Log in</button>
-            </form>
-            <div class="signup">
-                <p>Not registered? <a href="signup.html">Sign up now</a></p>
-            </div>
-        </div>
+</div>
+<div class="header-text">SoT Railways Ticketing System</div>
+<div class="login-container">
+    <div class="welcome-message">
+        <h1>Log in</h1>
     </div>
-    <div class="image-container">
-        <img src="path/to/your/image.jpg" alt="Description of image">
+    <form>
+        <label for="email">User ID (email)</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Log in</button>
+    </form>
+    <div class="signup">
+        <p>Not registered? <a href="signup.html">Sign up now</a></p>
     </div>
+    <div class="forgot-password">
+        <p><a href="forgot-password.html">Forgot Password?</a></p>
+    </div>
+    <button onclick="location.href='guest.html'">Login as Guest</button>
 </div>
 </body>
 </html>

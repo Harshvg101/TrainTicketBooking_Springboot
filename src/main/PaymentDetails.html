@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoT Railways Payment Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('path/to/your/image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the start (top) */
+            align-items: flex-start; /* Align items to the left */
+            height: 100vh;
+            margin: 0;
+            padding: 20px; /* Add padding */
+        }
+        .navbar {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .navbar a, .navbar button {
+            margin-left: 20px;
+            text-decoration: none;
+            color: black; /* Set the text color to black */
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px; /* Ensure the font size is the same */
+        }
+        .navbar a:hover, .navbar button:hover {
+            color: purple; /* Change the color to purple when hovered */
+        }
+        .header-text {
+            color: purple;
+            font-weight: bold;
+            font-size: 24px; /* Adjust font size as needed */
+            margin-bottom: 10px; /* Space between header and subheader */
+        }
+        .subheader-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            width: 100%;
+            flex-direction: column;
+        }
+        .subheader-text {
+            color: purple;
+            font-size: 20px; /* Adjust font size as needed */
+            margin-bottom: 20px; /* Space between subheader and container */
+        }
+        .payment-container {
+            background-color: rgba(238, 221, 238, 0.9); /* Light purple background with transparency */
+            padding: 40px; /* Padding for the container */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: calc(100% - 40px); /* Full width minus padding */
+            max-width: 1200px; /* Maximum width for larger screens */
+            text-align: center;
+            margin-bottom: 20px; /* Space below the container */
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        .form-group label {
+            flex: 1;
+            text-align: left;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group select {
+            flex: 2;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .payment-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #800080;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 18px; /* Increased font size */
+            cursor: pointer;
+            margin-top: 20px; /* Space above the button */
+        }
+        .payment-container button:hover {
+            background-color: #5a005a;
+        }
+        .card-logos {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+        .card-logos button {
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+        }
+        .card-logos img {
+            width: 30px;
+            height: auto;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: absolute;
+            bottom: 20px;
+            padding: 0 20px;
+        }
+        .button-group .pay-button {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px; /* Increased width */
+            height: 50px; /* Increased height */
+        }
+        .button-group .back-button {
+            position: absolute;
+            right: calc(3cm + 20px); /* Move 3cm to the left from the right edge */
+            width: 200px; /* Increased width */
+            height: 50px; /* Increased height */
+        }
+        .button-group button {
+            padding: 10px 20px;
+            background-color: #800080;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 18px; /* Increased font size */
+            cursor: pointer;
+        }
+        .button-group button:hover {
+            background-color: #5a005a;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="ticket.html">Ticket</a>
+    <a href="contact.html">Contact us</a>
+    <a href="mypage.html">My Page</a>
+    <a href="logout.html">Log Out</a>
+</div>
+<div class="header-text">SoT Railways Ticketing System</div>
+<div class="subheader-wrapper">
+    <div class="subheader-text">Payment Details</div>
+    <div class="payment-container">
+        <form>
+            <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <div class="card-logos">
+                    <button type="button"><img src="path/to/visa-logo.png" alt="Visa"></button>
+                    <button type="button"><img src="path/to/amex-logo.png" alt="Amex"></button>
+                    <button type="button"><img src="path/to/jcb-logo.png" alt="JCB"></button>
+                    <button type="button"><img src="path/to/mastercard-logo.png" alt="Mastercard"></button>
+                </div>
+                <input type="text" id="card-number" name="card-number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="expiry-month">Expiry Date</label>
+                <select id="expiry-month" name="expiry-month" required style="flex: 1; margin-right: 10px;">
+                    <option value="" disabled selected>Month</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <select id="expiry-year" name="expiry-year" required style="flex: 1;">
+                    <option value="" disabled selected>Year</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="card-holder">Name on Card</label>
+                <input type="text" id="card-holder" name="card-holder" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cvv">CVC</label>
+                <input type="number" id="cvv" name="cvv" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pin">Registered 4-digit PIN</label>
+                <input type="number" id="pin" name="pin" required>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="button-group">
+    <button type="submit" form="payment-form" class="pay-button">Pay</button>
+    <button type="button" class="back-button" onclick="window.history.back()">Back</button>
+</div>
+</body>
+</html>

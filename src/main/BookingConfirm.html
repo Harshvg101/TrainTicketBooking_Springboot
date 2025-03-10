@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoT Railways Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('path/to/your/image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the start (top) */
+            align-items: flex-start; /* Align items to the left */
+            height: 100vh;
+            margin: 0;
+            padding: 20px; /* Add padding */
+        }
+        .navbar {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .navbar a, .navbar button {
+            margin-left: 20px;
+            text-decoration: none;
+            color: black; /* Set the text color to black */
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px; /* Ensure the font size is the same */
+        }
+        .navbar a:hover, .navbar button:hover {
+            color: purple; /* Change the color to purple when hovered */
+        }
+        .header-text {
+            color: purple;
+            font-weight: bold;
+            font-size: 24px; /* Adjust font size as needed */
+            margin-bottom: 10px; /* Space between header and subheader */
+        }
+        .subheader-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            width: 100%;
+            flex-direction: column;
+        }
+        .subheader-text {
+            color: purple;
+            font-size: 20px; /* Adjust font size as needed */
+            margin-bottom: 20px; /* Space between subheader and container */
+        }
+        .confirmation-container {
+            background-color: rgba(238, 221, 238, 0.9); /* Light purple background with transparency */
+            padding: 40px; /* Padding for the container */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: calc(100% - 40px); /* Full width minus padding */
+            max-width: 1200px; /* Maximum width for larger screens */
+            text-align: center;
+            margin-bottom: 20px; /* Space below the container */
+        }
+        .confirmation-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #800080;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 18px; /* Increased font size */
+            cursor: pointer;
+            margin-top: 20px; /* Space above the button */
+        }
+        .confirmation-container button:hover {
+            background-color: #5a005a;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: absolute;
+            bottom: 20px;
+            padding: 0 20px;
+        }
+        .button-group .confirm-button {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px; /* Increased width */
+            height: 50px; /* Increased height */
+        }
+        .button-group .back-button {
+            position: absolute;
+            right: calc(3cm + 20px); /* Move 3cm to the left from the right edge */
+            width: 200px; /* Increased width */
+            height: 50px; /* Increased height */
+        }
+        .button-group button {
+            padding: 10px 20px;
+            background-color: #800080;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 18px; /* Increased font size */
+            cursor: pointer;
+        }
+        .button-group button:hover {
+            background-color: #5a005a;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="ticket.html">Ticket</a>
+    <a href="contact.html">Contact us</a>
+    <a href="mypage.html">My Page</a>
+    <a href="logout.html">Log Out</a>
+</div>
+<div class="header-text">SoT Railways Ticketing System</div>
+<div class="subheader-wrapper">
+    <div class="subheader-text">Booking Confirmation</div>
+    <div class="confirmation-container">
+        <p>Your booking details are as follows:</p>
+        <!-- Add booking details here -->
+        <p>Train: Limited Express</p>
+        <p>Departure: Tokyo</p>
+        <p>Destination: Shinagawa</p>
+        <p>Date: 2023-12-25</p>
+        <p>Time: 10:00 AM</p>
+    </div>
+</div>
+<div class="button-group">
+    <button type="submit" class="confirm-button">Confirm</button>
+    <button type="button" class="back-button" onclick="window.history.back()">Back</button>
+</div>
+</body>
+</html>
